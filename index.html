@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 기초 문법</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> 인트라넷 환경하에서 제이쿼리 선언 -->
+    <!-- 
+    <script>
+        alert("전처리 경고창"); // 1.
+        window.onload = function () {
+            alert("윈도우의 로드 이벤트에 의한 경고창"); // 3.
+        }
+        $(document).ready(function () { // 4.
+            // 문서가 준비 완료되면 함수 내부의 실행문을 실행하라
+            alert("실행완료");
+        })
+    </script>
+     -->
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <h2>선택자의 스타일 적용</h2>
+    <h3>직접선택자 - 클래스 선택자, 아이디 선택자, 요소 선택자, 그룹 선택자</h3>
+    <div class="direct_selector">
+        <p>자동차</p>
+        <h4 class="walk">도보</h4>
+        <h5>자전거</h5>
+        <h6 id="kickBoard">킥보드</h6>
+    </div>
+
+    <h3>인접관계선택자(간접선택자)</h3>
+    <h3>부모 또는 조상 선택자 - parent(), parents()</h3>
+    <div class="parent_selector">
+        <div class="my_location">
+            <span class="grandSon">나 손자</span>
+        </div>
+    </div>
+
+    <h3>가장 가까운 상위 선택자를 탐색할 때 - closest()</h3>
+    <div class="close_parents">
+        <ul>
+            <li><a href="">회사소개</a></li>
+            <li><a href="">경영소개<span class="headquarters">본사</span></a></li>
+            <li><a href="">제품소개</a></li>
+            <li><a href="">고객센터</a></li>
+        </ul>
+    </div>
+
+    <h3>자식요소(들)을 선택할 때</h3>
+    <div class="children_selector">
+        <p>아이맥</p>
+        <p>맥북프로</p>
+        <p>맥북에어</p>
+        <p>아이패트</p>
+        <h4>아이워치</h4>
+    </div>
+
+    <h3>하위요소(자손 포함)를 선택하기 위한 find("선택자")</h3>
+    <div class="find_selector">
+        <div>
+            <div>
+                <p>갤럭시 노트</p>
+                <p>아이폰 SE</p>
+            </div>
+        </div>
+    </div>
+
+    <h3>형제요소 선택자 - prev(), prevAll(), prevUntil("선택자"), next(), nextAll(), nextUntil("선택자"), siblings(), siblings("선택자")
+    </h3>
+    <div class="brother_selector">
+        <p class="red">레드</p>
+        <p class="orange">오렌지</p>
+        <p>옐로우</p>
+        <p class="green">그린</p>
+        <p>블루</p>
+        <p>다크블루</p>
+        <p class="purple">퍼플</p>
+    </div>
+</body>
+
+</html>
