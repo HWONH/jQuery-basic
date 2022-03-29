@@ -11,3 +11,40 @@ a{text-decoration: none;}
 button, input{padding: 0;border: none;background: none;font-family: inherit;font-size: inherit;color: inherit;}
 button{cursor: pointer;}
 address{font-style: normal;}
+
+/* .search_selector p:nth-child(1){background: #ffaaff;}
+.search_selector p:nth-of-type(1){background: #aaffff;}
+.search_selector p:last-child{font-size: 32px;}
+.search_selector p:last-of-type{font-weight: bold;} */
+/* :nth-child() : 부모 아래 여러 태그명을 가진 자식이 있을 경우, 순서를 정확하게 따지고 와야 적용 가능 */
+/* :nth-of-type() : 태그명의 타입(태그명)이 동일한 순서로 따지고 적용 */
+
+.run{
+    -webkit-appearance: none;
+    appearance: none;
+    /* 기존 브라우저에서 각 태그별로 제공되는 shape(박스, 화살표 포함)이 존재하는데 이것들을 모두 안 보이도록 처리하는 css 선언 */
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../img/check_off.svg);
+    background-size: contain; /* 아이콘은 contain으로 입력 */
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    outline: none; /* 접근성을 살리려면 제거 */
+}
+
+.run.on{
+    background-image: url(../img/check_on.svg);
+}
+
+.region{
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    background-image: url(../img/arrowDown.svg);
+    background-size: auto 4px; /* 이미지를 높이에 맞춰서 Ratio(비율)를 조정 */
+    /* background-size: 20px auto; 이미지를 너비에 맞춰서 Ratio(비율)를 조정 */
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+}

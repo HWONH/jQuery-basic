@@ -40,4 +40,46 @@ $(document).ready(function(){
     $(".green").nextUntil(".purple").css("color", "purple");
     $(".green").siblings().css("border-bottom", "2px solid #555");
     $(".green").siblings(".orange").css("background", "orange");
+
+    $(".search_selector p:nth-child(2)").css("color", "#ff6600");
+    
+    /* first() : 동일한 선택자가 다수일 때 맨처음에 접하는 선택자를 지정 */
+    $(".search_selector p").first().css("background", "#aaffaa");
+    $(".search_selector p:first").css("font-size", "36px");
+    /* last() : 동일한 선택자가 다수일 때 맨마지막에 접하는 선택자를 지정 */
+    $(".search_selector p").last().css("background", "#ffaaaa");
+    $(".search_selector p:last").css("font-size", "38px");
+    
+    // odd : 인덱스 번호에서는 홀수/순서상 개념은 짝수번째
+    $(".search_selector p:odd").css("border-left", "4px solid red");
+    // even : 인덱스 번호에서는 짝수/순서상 개념은 홀수번째
+    $(".search_selector p:even").css("border-left", "4px solid blue");
+    
+    // eq(index) : 해당 index번호의 요소를 선택;equipment
+    $(".search_selector p:eq(2)").css("font-style", "italic");
+    $(".search_selector p").eq(1).css("background", "#aaaaff");
+    
+    // lt(index) : index번호보다 작은 요소들을 선택;less than
+    $(".search_selector p:lt(2)").css("border-bottom", "2px solid orange");
+    // gt(index) : index번호보다 큰 요소들을 선택;greater than
+    $(".search_selector p:gt(2)").css("border-top", "3px solid green");
+
+    $(".attr_selector p[class='my_car']").css("color", "blue");
+    $(".attr_selector p[class~='car']").css("background", "#eeeeaa");
+    $(".attr_selector p[class*='ca']").css("font-style", "italic");
+    $(".attr_selector p[class$='ar']").css("font-weight", "bold");
+    $(".attr_selector p[class^='m']").css("border-left", "5px solid red");
+
+    // ~= : car라는 독립적인 클래스명을 가진 요소 즉, <p class="my_car">Kia</p>와 같이 car라는 단어를 포함한 클래스명을 가진 요소는 해당안됨
+    // *= : ca라는 단어를 포함한 클래스명을 가진 요소
+    // $= : 마지막 클래스명이 ar라는 단어로 끝나는 요소
+    // ^= : 첫번째 클래스명이 m라는 단어로 시작하는 요소
+
+    $(":password").css("background", "#aaffff");
+    var $chk_hobby = $(":checked").val();
+    console.log($chk_hobby);
+
+    var $input_chk=$(":checked");
+    console.log($input_chk);
+    $(":checked").css("background", "#aaffaa");
 });
