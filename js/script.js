@@ -82,4 +82,168 @@ $(document).ready(function(){
     var $input_chk=$(":checked");
     console.log($input_chk);
     $(":checked").css("background", "#aaffaa");
+
+    /* ---------------------------------------------------- */
+    $(".run").click(function(){
+        var $on=$(".run").hasClass("on");
+        if($on==false){
+         $(".run").addClass("on"); // setAttribute는 갱신의 의미이나 addClass는 추가의 의미
+        }else{
+         $(".run").removeClass("on");
+        }
+     });
+    /* ---------------------------------------------------- */
+     var $sel_region=$(":selected").val();
+     console.log($sel_region);
+ 
+     $(".contains_selector p:contains('신데렐라')").css("font-size", "36px");
+ 
+     $(".contents_selector ul li a").contents("span").css("color", "red");
+     // 하위요소 선택;선택자를 기준으로 가장 가까운 하위요소를 찾아 선택
+     // depth1 span(.contents_selector ul li a span)만 css 적용([개발자 모드] 확인)
+ 
+     $(".has_selector p:has('span')").css("font-weight", "bold");
+     // 선택자 선택;하위요소를 포함하고 있는 선택자를 선택(중심 대상은 p)
+     // p:nth-child(3)에 css 적용
+ 
+     $(".not_selector p").not(":eq(1)").css("color", "#ee3535");
+     // 제외요소를 배제하고 나머지를 모두 선택
+ 
+     $(".find_selector li").find("span").css("color", "pink");
+     // 하위에 있는 요소를 찾아 선택, 하위에 중복되는 요소가 있다면 모두 선택
+     // contents(해당되는 하위요소 중 가장 가까운 하위요소) vs find(해당되는 하위요소 모두 선택)
+ 
+     $("#festival").closest("div").css("border", "2px solid #ff0000");
+ 
+     $("#myList li").not(":eq(0)").css("background", "blue");
+     $("#myList li:eq(2)").css("background", "green");
+ 
+     var $total_checked=$(".is_method input").is(":checked");
+     console.log($total_checked);
+     if($total_checked==true){
+         $(".detail_unit input").attr("checked", "checked");
+     }
+ 
+     // each문의 원리
+     var $txt_01="초기 이름";
+     var $txt_02="추가 이름";
+ 
+     $(".each_method p").each(function(num){ // num : 매개변수, each문 내 매개변수자리는 어떠한 매개변수를 선언해주어도 함수문 외부에 따로 선언해준 값이 없어 default값인 인덱스번호(each문의 매개변수일 때만 해당)를 가져온다
+         $txt_01+=$txt_02;
+         console.log($txt_01);
+         $(this).text(num+$txt_01); // innerText의 역할을 제이쿼리에서는 text로!
+     });
+ 
+     var $txt_arr=["바람과 함께 사라지다", "애플 민트", "아몬드 봉봉", "슈팅스타"];
+     $(".each_01 ul li").each(function(num){
+         $(this).text($txt_arr[num]);
+     });
+ 
+     // each() 메서드의 역할은 선택자의 개수를 인지하고 있으며, 순차적으로 위(인덱스 번호=0)에서부터 접근하여 실행문을 동작시키는 역할
+     // each() 메서드의 주의사항 : 구조가 존재해야만 해당하는 구조로 접근이 가능
+ 
+     /* 
+     하위요소를 저장
+     var $el=변수명.innterHTML();  스크립트
+     var $el=변수명.html();        제이쿼리
+ 
+     하위요소의 변경(갱신)
+     변수명.innterHtml=("새요소")  스크립트
+     변수명.html("새요소")       제이쿼리
+      */
+     var $html=$(".html_method h4").html(); // 하위요소 저장
+     console.log($html);
+     var $html=$(".html_method h4").html("your <a href=''>Choice</a>"); // 하위요소 변경(갱신)
+ 
+     var $text=$(".text_method h4").text(); // 하위요소 저장
+     console.log($text);
+     var $text=$(".text_method h4").text("오늘의 추천요리"); // 하위요소 변경(갱신)
+ 
+     /* 
+     var $score=$(".attr_method .average").attr("data-score");
+     console.log($score);
+     $(".attr_method .average .gage_bar").css("width", $score+"%");
+      */
+     var $student=["문강태", "고문영"];
+     $(".attr_method .average").each(function(num){
+         var $score=$(this).attr("data-score");
+         console.log($score);
+         $(this).find(".gage_bar").text($student[num]);
+         $(this).find(".gage_bar").css("width", $score+"%");
+ 
+         // $(this).attr("stuNum", num+1);
+         // $(this).attr("name", $student[num]);
+ 
+         $(this).attr({"stuNum":num+1, "name":$student[num]});
+     });
+ 
+     // 기존 속성을 제거시
+     $(".removeAttr p").removeAttr("rel");
+ 
+     $(".addClass_method .add").click(function(){
+         $(this).siblings("div").find("img").addClass("active");
+         return false;
+     });
+     $(".addClass_method .remove").click(function(){
+         $(this).siblings("div").find("img").removeClass("active");
+         return false;
+     });
+    /* ---------------------------------------------------- */
+     $(".res_btn").click(function(){
+         $(".res_menu").addClass("active");
+         return false;
+     });
+     $(".close").click(function(){
+         $(".res_menu").removeClass("active");
+         return false;
+     });
+ 
+     /* 
+     $(".both_aspect a").click(function(){
+         $(this).addClass("active");
+     });
+     $(".both_aspect a").click(function(){
+         $(this).removeClass("active");
+     });
+      */
+ 
+     $(".both_aspect a").click(function(){
+         var $active=$(this).hasClass("active");
+         console.log($active);
+         if($active==false){
+             $(this).addClass("active");
+         }else{
+             $(this).removeClass("active");
+         }
+         return false;
+     });
+ 
+     $(".elevator_btn li").click(function(){
+         var $on=$(this).hasClass("active");
+         if($on==false){
+             $(this).addClass("active");
+         }else{
+             $(this).removeClass("active");
+         }
+         return false;
+     });
+ 
+     $(".open_popup").click(function(){
+             $(".dark_bg").addClass("active");
+             $(".popup").addClass("active");
+     });
+ 
+     $(".dark_bg, .popup .close").click(function(){
+         $(".dark_bg").removeClass("active");
+         $(".popup").removeClass("active");
+     })
+ 
+     var $input_text=$(".val_method input").val();
+     console.log($input_text);
+     $(".val_method input").val("돌이");
+ 
+     var $prop=$(".attribute_method img").prop("src");
+     console.log("$prop의 속성값 : "+$prop); // 절대경로
+     var $attr=$(".attribute_method img").attr("src");
+     console.log("$attr의 속성값 : "+$attr); // 상대경로(실제로 존재하는 값)
 });
